@@ -52,14 +52,14 @@ for lang, short in LANGS.items():
         sheet_rows.append([new_id, en[i], ref[i], a_txt, b_txt, "", "", "", ""])
         key_rows.append([new_id, a_sys, b_sys])
 
-    with open(f"eval_sheet_{short}.csv", "w", encoding="utf-8", newline="") as f:
+    with open(f"eval_data/eval_sheet_{short}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["id", "english", "reference",
                     "translation_A", "translation_B",
                     "A_adequacy_1to5", "A_fluency_1to5",
                     "B_adequacy_1to5", "B_fluency_1to5"])
         w.writerows(sheet_rows)
-    with open(f"eval_key_{short}.csv", "w", encoding="utf-8", newline="") as f:
+    with open(f"eval_data/eval_key_{short}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["id", "A_system", "B_system"])
         w.writerows(key_rows)

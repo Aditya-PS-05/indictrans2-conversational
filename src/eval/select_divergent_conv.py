@@ -97,15 +97,15 @@ for nid, (cs, _, i, en, b, s) in enumerate(sel, 1):
     rows.append([nid, en, a_txt, b_txt, ""])
     key.append([nid, a_sys, b_sys])
 
-for f in ("eval_pref_hin.csv", "eval_pref_key_hin.csv"):
+for f in ("eval_data/eval_pref_hin.csv", "eval_data/eval_pref_key_hin.csv"):
     if os.path.exists(f):
         shutil.copy(f, f.replace(".csv", "_mixed.csv"))
 
-with open("eval_pref_hin.csv", "w", encoding="utf-8", newline="") as f:
+with open("eval_data/eval_pref_hin.csv", "w", encoding="utf-8", newline="") as f:
     w = csv.writer(f)
     w.writerow(["id", "english", "translation_A", "translation_B", "which_is_better"])
     w.writerows(rows)
-with open("eval_pref_key_hin.csv", "w", encoding="utf-8", newline="") as f:
+with open("eval_data/eval_pref_key_hin.csv", "w", encoding="utf-8", newline="") as f:
     w = csv.writer(f)
     w.writerow(["id", "A_system", "B_system"])
     w.writerows(key)

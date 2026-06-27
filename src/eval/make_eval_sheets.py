@@ -90,14 +90,14 @@ def write_sheet(path, banner, rows):
     print(f"wrote {path}  ({len(rows)} pairs)")
 
 
-rows = list(csv.DictReader(open("eval_pref_hin.csv", encoding="utf-8")))
+rows = list(csv.DictReader(open("eval_data/eval_pref_hin.csv", encoding="utf-8")))
 print(f"authoring criteria with {AUTHOR_MODEL} ...")
 crit = author_criteria()
-json.dump(crit, open("eval_criteria.json", "w", encoding="utf-8"),
+json.dump(crit, open("eval_data/eval_criteria.json", "w", encoding="utf-8"),
           ensure_ascii=False, indent=2)
 print("wrote eval_criteria.json\n")
 for k in ("neutral", "conversational"):
     print(f"--- {k} criterion (GPT-authored) ---\n{crit[k]}\n")
-write_sheet("eval_neutral_hin.xlsx", crit["neutral"], rows)
-write_sheet("eval_conv_hin.xlsx", crit["conversational"], rows)
+write_sheet("eval_data/eval_neutral_hin.xlsx", crit["neutral"], rows)
+write_sheet("eval_data/eval_conv_hin.xlsx", crit["conversational"], rows)
 print("\nnext: python dual_criterion_judge.py    (runs top-10 models on both)")

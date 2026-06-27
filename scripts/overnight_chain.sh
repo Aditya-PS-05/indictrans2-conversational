@@ -28,11 +28,11 @@ pkill -f finetune_it2 2>/dev/null; sleep 12   # free GPU before benchmarking
   grep -aoE "\{.*chrf[^}]*\}" ft_it2_mixed_lr1e5.log | tail -3
   echo "=== CONV-TEST: ft_it2_mixed_lr1e5 ==="
 } > mixed_lr1e5_results.log 2>&1
-python benchmark_translate.py --test conv_splits/test.jsonl \
+python src/eval/benchmark_translate.py --test conv_splits/test.jsonl \
   --models ftit2:ft_it2_mixed_lr1e5 --limit 600 --batch-size 16 \
   >> mixed_lr1e5_results.log 2>&1
 echo "=== FLORES: ft_it2_mixed_lr1e5 ===" >> mixed_lr1e5_results.log
-python benchmark_translate.py --test flores_test.jsonl \
+python src/eval/benchmark_translate.py --test flores_test.jsonl \
   --models ftit2:ft_it2_mixed_lr1e5 --limit 997 --batch-size 16 \
   >> mixed_lr1e5_results.log 2>&1
 echo "ALL DONE" >> mixed_lr1e5_results.log

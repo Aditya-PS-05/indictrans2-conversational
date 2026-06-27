@@ -58,10 +58,10 @@ def binom_two_sided(k, n, p=0.5):
                         if math.comb(n, i) * p**i * (1 - p)**(n - i) <= obs + 1e-12))
 
 
-rows = list(csv.DictReader(open("eval_pref_hin.csv", encoding="utf-8")))
+rows = list(csv.DictReader(open("eval_data/eval_pref_hin.csv", encoding="utf-8")))
 key = {r["id"]: (r["A_system"], r["B_system"])
-       for r in csv.DictReader(open("eval_pref_key_hin.csv", encoding="utf-8"))}
-crit = json.load(open("eval_criteria.json", encoding="utf-8"))
+       for r in csv.DictReader(open("eval_data/eval_pref_key_hin.csv", encoding="utf-8"))}
+crit = json.load(open("eval_data/eval_criteria.json", encoding="utf-8"))
 models = sys.argv[1:] or TOP10
 
 print(f"{len(rows)} pairs, counterbalanced, {len(models)} models, 2 criteria, "
@@ -111,7 +111,7 @@ for m in models:
         return f"{s:>2}/{b:>2}/{t:>2}  {wr:>4}  p={p:.3f}" + ("" if e == 0 else f" err{e}")
     print(f"{m:14s} | {fmt(cells['neutral']):33s} | {fmt(cells['conversational'])}")
 
-with open("dual_summary.csv", "w", newline="", encoding="utf-8") as f:
+with open("eval_data/dual_summary.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
     w.writerow(["model", "criterion", "soup", "base", "tie", "err", "sign_p"])
     w.writerows(summary)

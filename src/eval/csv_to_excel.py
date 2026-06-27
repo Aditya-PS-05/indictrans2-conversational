@@ -45,8 +45,8 @@ def make_sheet(csv_path, xlsx_path, score_cols):
 
 
 # eval sheets: score columns F,G,H,I = 6,7,8,9
-make_sheet("eval_sheet_hin.csv", "eval_sheet_hin.xlsx", [6, 7, 8, 9])
-make_sheet("eval_sheet_tam.csv", "eval_sheet_tam.xlsx", [6, 7, 8, 9])
+make_sheet("eval_data/eval_sheet_hin.csv", "eval_data/eval_sheet_hin.xlsx", [6, 7, 8, 9])
+make_sheet("eval_data/eval_sheet_tam.csv", "eval_data/eval_sheet_tam.xlsx", [6, 7, 8, 9])
 # keys: no dropdowns (keep private)
-make_sheet("eval_key_hin.csv", "eval_key_hin.xlsx", [])
-make_sheet("eval_key_tam.csv", "eval_key_tam.xlsx", [])
+make_sheet("eval_data/eval_key_hin.csv", "eval_data/eval_key_hin.xlsx", [])
+make_sheet("eval_data/eval_key_tam.csv", "eval_data/eval_key_tam.xlsx", [])

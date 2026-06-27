@@ -17,7 +17,7 @@ source ~/it2env311/bin/activate
   grep -aoE "\{.*chrf[^}]*\}" ft_it2_mixed.log | tail -3
   echo "=== CONV-TEST: ft_it2_mixed ==="
 } > mixed_results.log 2>&1
-python benchmark_translate.py --test conv_splits/test.jsonl --models ftit2:ft_it2_mixed --limit 600 --batch-size 16 >> mixed_results.log 2>&1
+python src/eval/benchmark_translate.py --test conv_splits/test.jsonl --models ftit2:ft_it2_mixed --limit 600 --batch-size 16 >> mixed_results.log 2>&1
 echo "=== FLORES: ft_it2_mixed ===" >> mixed_results.log
-python benchmark_translate.py --test flores_test.jsonl --models ftit2:ft_it2_mixed --limit 997 --batch-size 16 >> mixed_results.log 2>&1
+python src/eval/benchmark_translate.py --test flores_test.jsonl --models ftit2:ft_it2_mixed --limit 997 --batch-size 16 >> mixed_results.log 2>&1
 echo "ALL DONE" >> mixed_results.log

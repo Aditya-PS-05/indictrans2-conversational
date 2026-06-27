@@ -87,9 +87,9 @@ def binom_two_sided(k, n, p=0.5):
                         if math.comb(n, i) * p**i * (1 - p)**(n - i) <= obs + 1e-12))
 
 # ---- run ------------------------------------------------------------------------
-rows = list(csv.DictReader(open("eval_pref_hin.csv", encoding="utf-8")))
+rows = list(csv.DictReader(open("eval_data/eval_pref_hin.csv", encoding="utf-8")))
 key = {r["id"]: (r["A_system"], r["B_system"])
-       for r in csv.DictReader(open("eval_pref_key_hin.csv", encoding="utf-8"))}
+       for r in csv.DictReader(open("eval_data/eval_pref_key_hin.csv", encoding="utf-8"))}
 
 models = sys.argv[1:] or discover()
 print(f"judging {len(rows)} pairs (counterbalanced) with {len(models)} models:")
@@ -117,7 +117,7 @@ for model in models:
             soup += 1
         else:
             base += 1
-    with open(f"mm_{model.replace('/','_')}.csv", "w", newline="", encoding="utf-8") as f:
+    with open(f"eval_data/mm_{model.replace('/','_')}.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["id", "verdict"]); w.writerows(per)
     dec = soup + base
     p = binom_two_sided(soup, dec)
@@ -129,7 +129,7 @@ for model in models:
           f"win {('%.0f%%'%(100*soup/dec)) if dec else 'n/a':>4}  p={p:.3f}{flag}")
 
 # ---- aggregate ------------------------------------------------------------------
-with open("mm_summary.csv", "w", newline="", encoding="utf-8") as f:
+with open("eval_data/mm_summary.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
     w.writerow(["model", "soup", "base", "tie", "err", "decisive", "sign_p"])
     w.writerows(summary)

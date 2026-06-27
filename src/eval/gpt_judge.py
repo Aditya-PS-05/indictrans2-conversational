@@ -33,7 +33,7 @@ mistranslation, or a glitch — should lose regardless of how casual it sounds.
 
 Answer with EXACTLY one token: A, B, or Tie."""
 
-rows = list(csv.DictReader(open("eval_pref_hin.csv", encoding="utf-8")))
+rows = list(csv.DictReader(open("eval_data/eval_pref_hin.csv", encoding="utf-8")))
 out = []
 for r in rows:
     msg = PROMPT.format(en=r["english"], a=r["translation_A"], b=r["translation_B"])
@@ -46,7 +46,7 @@ for r in rows:
     out.append([r["id"], choice])
     print(f"{r['id']:>2}: {ans[:8]:8s} -> {choice}")
 
-with open("gpt_pref_hin.csv", "w", newline="", encoding="utf-8") as f:
+with open("eval_data/gpt_pref_hin.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f)
     w.writerow(["id", "which_is_better"])
     w.writerows(out)
