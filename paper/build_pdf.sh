@@ -13,7 +13,7 @@ awk '/^## Abstract/{f=1} f' WRITEUP.md > .paper_body.md
 cat > .paper_full.md <<'YAML'
 ---
 title: "Conversational Domain Adaptation of IndicTrans2 across 21 Indic Languages via Experience Replay and Model Soups"
-author: "Aditya Pratap Singh (Independent Researcher)"
+author: "Aditya Pratap Singh"
 date: "June 2026"
 geometry: margin=1in
 fontsize: 11pt
@@ -30,6 +30,9 @@ pandoc .paper_full.md -s -o paper.tex
 
 # 4. map Unicode math -> LaTeX math in the generated .tex (single backslashes via \\)
 sed -i 's/−/$-$/g; s/·/$\\cdot$/g; s/θ/$\\theta$/g; s/α/$\\alpha$/g; s/Δ/$\\Delta$/g; s/≈/$\\approx$/g; s/≥/$\\ge$/g; s/≤/$\\le$/g; s/±/$\\pm$/g; s/→/$\\to$/g; s/↔/$\\leftrightarrow$/g; s/×/$\\times$/g; s/↑/$\\uparrow$/g; s/↓/$\\downarrow$/g' paper.tex
+
+# 4b. show the email under the author name in the typeset title block
+sed -i 's#\\author{Aditya Pratap Singh}#\\author{Aditya Pratap Singh\\\\ \\texttt{adipras1407@gmail.com}}#' paper.tex
 
 # 5. compile (twice: settle any refs); quiet unless it errors
 pdflatex -interaction=nonstopmode -halt-on-error paper.tex >/tmp/ptex.log 2>&1 || { tail -25 /tmp/ptex.log; exit 1; }
