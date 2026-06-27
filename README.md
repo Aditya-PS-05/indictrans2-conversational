@@ -11,12 +11,13 @@
 [![Base model](https://img.shields.io/badge/base-IndicTrans2--1B-0073FF?labelColor=black&style=flat-square)](https://huggingface.co/ai4bharat/indictrans2-en-indic-1B)
 [![Languages](https://img.shields.io/badge/languages-21%20Indic-0073FF?labelColor=black&style=flat-square)](#results)
 [![arXiv](https://img.shields.io/badge/arXiv-pending-b31b1b?labelColor=black&style=flat-square&logo=arxiv)](#citation)
+[![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-HuggingFace-FFD21E?labelColor=black&style=flat-square)](https://huggingface.co/adipras1407/indictrans2-en-indic-1B-conversational)
 
 [![GitHub Stars](https://img.shields.io/github/stars/Aditya-PS-05/indictrans2-conversational?color=0073FF&labelColor=black&style=flat-square)](https://github.com/Aditya-PS-05/indictrans2-conversational/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/Aditya-PS-05/indictrans2-conversational?color=0073FF&labelColor=black&style=flat-square)](https://github.com/Aditya-PS-05/indictrans2-conversational/network/members)
 [![GitHub Issues](https://img.shields.io/github/issues/Aditya-PS-05/indictrans2-conversational?color=0073FF&labelColor=black&style=flat-square)](https://github.com/Aditya-PS-05/indictrans2-conversational/issues)
 
-[ 📄 Paper (PDF) ](./paper/paper.pdf) · [ 🤗 Model (HF) ](#models) · [ 🧪 Eval harness ](./src/eval) · [ 📊 Results ](#results)
+[ 📄 Paper (PDF) ](./paper/paper.pdf) · [ 🤗 Model (HF) ](https://huggingface.co/adipras1407/indictrans2-en-indic-1B-conversational) · [ 🧪 Eval harness ](./src/eval) · [ 📊 Results ](#results)
 
 </div>
 
@@ -82,7 +83,7 @@ Naive conversational fine-tuning alone gains +5.4 conv chrF on Hindi but **loses
 
 | Model | What | Link |
 |---|---|---|
-| **Soup (recommended)** | `ft_it2_ml_mixed_soup` — replay-FT averaged with base (α=0.6) | 🤗 `<HF_USER>/indictrans2-en-indic-1B-conversational` *(upload pending)* |
+| **Soup (recommended)** | `ft_it2_ml_mixed_soup` — replay-FT averaged with base (α=0.6) | [🤗 adipras1407/indictrans2-en-indic-1B-conversational](https://huggingface.co/adipras1407/indictrans2-en-indic-1B-conversational) |
 | Mixed-FT | `ft_it2_ml_mixed` — pre-soup fine-tune | *(optional release)* |
 
 See [`MODEL_CARD.md`](./MODEL_CARD.md) for usage code, intended use, and limitations.
@@ -117,7 +118,7 @@ import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from IndicTransToolkit import IndicProcessor          # pip install IndicTransToolkit
 
-REPO = "<HF_USER>/indictrans2-en-indic-1B-conversational"
+REPO = "adipras1407/indictrans2-en-indic-1B-conversational"
 tok = AutoTokenizer.from_pretrained("ai4bharat/indictrans2-en-indic-1B", trust_remote_code=True)
 model = AutoModelForSeq2SeqLM.from_pretrained(REPO, trust_remote_code=True).eval()
 ip = IndicProcessor(inference=True)

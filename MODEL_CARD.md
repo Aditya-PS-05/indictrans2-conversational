@@ -81,7 +81,7 @@ import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from IndicTransToolkit import IndicProcessor   # pip install IndicTransToolkit
 
-REPO = "<HF_USER>/indictrans2-en-indic-1B-conversational"
+REPO = "adipras1407/indictrans2-en-indic-1B-conversational"
 # Load the tokenizer from the base checkpoint (recommended).
 tok = AutoTokenizer.from_pretrained("ai4bharat/indictrans2-en-indic-1B", trust_remote_code=True)
 model = AutoModelForSeq2SeqLM.from_pretrained(REPO, trust_remote_code=True).eval()
