@@ -1,0 +1,44 @@
+# data (large / license-encumbered — rebuild via scripts)
+final_v2/
+conv_splits/
+sig/
+archive*/
+*.jsonl
+*.tsv
+
+# model weights (host on HuggingFace, not git)
+ft_it2*/
+ft_nllb*/
+*.safetensors
+*.bin
+*.SRC
+*.TGT
+
+# eval spreadsheets / generated outputs
+*.xlsx
+gpt_pref_*.csv
+mm_*.csv
+dual_summary.csv
+
+# latex / build intermediates
+paper.aux
+paper.log
+paper.out
+*.synctex.gz
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+it2env311/
+
+# tooling internal state (may contain private conversation transcripts!)
+.omc/
+.claude/
+
+# personal ops notes (contain AWS instance ID / paths — not for public repo)
+aws-gpu-guide.md
+
+# misc
+.DS_Store
